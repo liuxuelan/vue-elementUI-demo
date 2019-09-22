@@ -17,10 +17,15 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+# server
+
+> A node.js project
+
+## Build Setup
+``` bash
 #create a project using node+express
 express server -e
 
-``` bash
 # join project
 cd server
 

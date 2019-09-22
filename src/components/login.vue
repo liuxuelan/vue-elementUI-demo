@@ -56,10 +56,8 @@ export default {
           let _this = this;
           // 验证通过
           this.axios.post('/api/login',{
-            params: {
               username: _this.loginForm.username,
               password: _this.loginForm.password
-            }
           })
           .then(response => {
             console.log('登陆成功', response.data)

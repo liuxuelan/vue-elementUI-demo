@@ -20,7 +20,8 @@ npm run build --report
 #create a project using node+express
 express server -e
 
-#join project
+``` bash
+# join project
 cd server
 
 # install dependencies

@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { mapState, mapActions} from 'vuex'
 export default {
   name: "login",
   data() {
@@ -50,6 +51,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions (['COMMIT_USERINFO']),
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
@@ -61,11 +63,19 @@ export default {
           })
           .then(response => {
             if (response.data.length) {
-              console.log('登陆成功', response.data)
+              //先将用户信息存储到本地
+              localStorage.setItem('userinfo',JSON.stringify(response.data[0]))
+              //把用户信息取到
+              const userinfo = localStorage.getItem('userinfo')
+              console.log(userinfo)
+              //把用户信息存储到store
+              _this.COMMIT_USERINFO(userinfo);
+              //_this.$store.commit('SAVE_USERINFO', JSON.parse(userinfo))// 提交mutations里面的方法，第一个参数为方法名，第二个参数是传入的数据
               _this.$message({
                 message: '恭喜你，登录成功！',
                 type: 'success'
               });
+              _this.$router.push('/home');
             } else {
               _this.$message.error('请检查用户名和密码');
             }

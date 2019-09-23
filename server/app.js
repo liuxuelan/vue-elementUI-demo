@@ -43,3 +43,14 @@ app.listen(9897, ()=>{
   console.log('启动服务器')
 })
 module.exports = app;
+/**
+ create table users(
+   id int primary key auto_increment,
+   username varchar(50),
+   password varchar(50)
+ );
+
+ insert into users(username, password) values('admin', 'lxl520lzp');
+ insert into users(username, password) values('admin123', '12mjfkfk');
+
+ */

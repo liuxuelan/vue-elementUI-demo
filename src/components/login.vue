@@ -60,7 +60,15 @@ export default {
               password: _this.loginForm.password
           })
           .then(response => {
-            console.log('登陆成功', response.data)
+            if (response.data.length) {
+              console.log('登陆成功', response.data)
+              _this.$message({
+                message: '恭喜你，登录成功！',
+                type: 'success'
+              });
+            } else {
+              _this.$message.error('请检查用户名和密码');
+            }
           })
         } else {
           console.log("error submit!!");
